@@ -34,9 +34,8 @@ const Button = styled.div`
   position: fixed;
   width: 75px;
   height: 75px;
-  background: #98e2d5;
+  background: #00b7b7;
   border-radius: 37.5px;
-  border: 1px solid #73d8c0;
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
   transition: 0.07s ease-in-out;
   &:hover {

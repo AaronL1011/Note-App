@@ -1,6 +1,7 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
-const schema = require('./schema/schema');
+const graphQLSchema = require('./schema/index');
+const graphQLResolvers = require('./resolvers/index');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -13,15 +14,16 @@ mongoose.connect(process.env.DB_CONNECT, {
   useFindAndModify: false
 });
 mongoose.connection.once('open', () => {
-  console.log('Connected to db.');
+  console.log('Connected to MongoDB');
 });
 
 app.use(cors());
 app.use(
   '/graphql',
   graphqlHTTP({
-    schema
-    // graphiql: true
+    schema: graphQLSchema,
+    rootValue: graphQLResolvers,
+    graphiql: true
   })
 );
 
